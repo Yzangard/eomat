@@ -1,0 +1,34 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:eomat"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:ViewModels="clr-namespace:eomat.ViewModels" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" x:Class="eomat.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="865" Width="1319" Background="Black">
+    <Grid Margin="0,0,2,11">
+
+        <dxg:TreeListControl x:Name="locationTreeView" HorizontalAlignment="Left" Width="244" Margin="10,10,0,583" >
+            <dxg:TreeListControl.Columns>
+                <dxg:TreeListColumn FieldName="Name" Header="Name"/>
+            </dxg:TreeListControl.Columns>
+            <dxg:TreeListControl.View>
+                <dxg:TreeListView AutoWidth="True" KeyFieldName="NodeID" ParentFieldName="ParentNodeID" ShowCheckboxes="True" ShowVerticalLines="False" ShowSearchPanelFindButton="True" ShowHorizontalLines="False" ShowIndicator="False" AllowRecursiveNodeChecking="True" />
+            </dxg:TreeListControl.View>
+            <dxmvvm:Interaction.Behaviors>
+                <dxmvvm:EventToCommand EventName="PropertyChanged"/>
+            </dxmvvm:Interaction.Behaviors>
+        </dxg:TreeListControl>
+
+        <dxg:TreeListControl x:Name="marketItemTreeView" HorizontalAlignment="Left" Width="244" Margin="10,245,0,10">
+            <dxg:TreeListControl.Columns>
+                <dxg:TreeListColumn FieldName="Name" Header="Name"/>
+            </dxg:TreeListControl.Columns>
+            <dxg:TreeListControl.View>
+                <dxg:TreeListView AutoWidth="True" KeyFieldName="NodeID" ParentFieldName="ParentNodeID" AllowRecursiveNodeChecking="True" ShowHorizontalLines="False" ShowVerticalLines="False" ShowCheckboxes="True" ShowIndicator="False"/>
+            </dxg:TreeListControl.View>
+        </dxg:TreeListControl>
+
+    </Grid>
+</Window>

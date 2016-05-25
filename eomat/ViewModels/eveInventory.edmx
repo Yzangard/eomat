@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="eveInventoryModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\jean-\OneDrive\Documents\Visual Studio 2015\Projects\eomat\eomat\Data\eve.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'main.invMarketGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="invMarketGroups">
+          <Key>
+            <PropertyRef Name="marketGroupID" />
+          </Key>
+          <Property Name="marketGroupID" Type="integer" Nullable="false" />
+          <Property Name="parentGroupID" Type="integer" />
+          <Property Name="marketGroupName" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="3000" />
+          <Property Name="iconID" Type="integer" />
+          <Property Name="hasTypes" Type="bit" />
+        </EntityType>
+        <EntityType Name="invMetaGroups">
+          <Key>
+            <PropertyRef Name="metaGroupID" />
+          </Key>
+          <Property Name="metaGroupID" Type="integer" Nullable="false" />
+          <Property Name="metaGroupName" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="1000" />
+          <Property Name="iconID" Type="integer" />
+        </EntityType>
+        <EntityType Name="invMetaTypes">
+          <Key>
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="typeID" Type="integer" Nullable="false" />
+          <Property Name="parentTypeID" Type="integer" />
+          <Property Name="metaGroupID" Type="integer" />
+        </EntityType>
+        <EntityType Name="invTypes">
+          <Key>
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="typeID" Type="integer" Nullable="false" />
+          <Property Name="groupID" Type="integer" />
+          <Property Name="typeName" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="3000" />
+          <Property Name="mass" Type="real" />
+          <Property Name="volume" Type="real" />
+          <Property Name="capacity" Type="real" />
+          <Property Name="portionSize" Type="integer" />
+          <Property Name="raceID" Type="integer" />
+          <Property Name="basePrice" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="published" Type="integer" />
+          <Property Name="marketGroupID" Type="integer" />
+          <Property Name="graphicID" Type="integer" />
+          <Property Name="iconID" Type="integer" />
+          <Property Name="radius" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="soundID" Type="integer" />
+        </EntityType>
+        <EntityContainer Name="eveInventoryModelStoreContainer">
+          <EntitySet Name="invMetaGroups" EntityType="Self.invMetaGroups" store:Type="Tables" />
+          <EntitySet Name="invMetaTypes" EntityType="Self.invMetaTypes" store:Type="Tables" />
+          <EntitySet Name="invTypes" EntityType="Self.invTypes" store:Type="Tables" />
+          <EntitySet Name="invMarketGroups" EntityType="Self.invMarketGroups" store:Type="Tables">
+            <DefiningQuery>SELECT 
+[invMarketGroups].[marketGroupID] AS [marketGroupID], 
+[invMarketGroups].[parentGroupID] AS [parentGroupID], 
+[invMarketGroups].[marketGroupName] AS [marketGroupName], 
+[invMarketGroups].[description] AS [description], 
+[invMarketGroups].[iconID] AS [iconID], 
+[invMarketGroups].[hasTypes] AS [hasTypes]
+FROM [invMarketGroups] AS [invMarketGroups]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eveInventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="invMetaGroups">
+          <Key>
+            <PropertyRef Name="metaGroupID" />
+          </Key>
+          <Property Name="metaGroupID" Type="Int64" Nullable="false" />
+          <Property Name="metaGroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="iconID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="invMetaTypes">
+          <Key>
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="typeID" Type="Int64" Nullable="false" />
+          <Property Name="parentTypeID" Type="Int64" />
+          <Property Name="metaGroupID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="invTypes">
+          <Key>
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="typeID" Type="Int64" Nullable="false" />
+          <Property Name="groupID" Type="Int64" />
+          <Property Name="typeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="mass" Type="Double" />
+          <Property Name="volume" Type="Double" />
+          <Property Name="capacity" Type="Double" />
+          <Property Name="portionSize" Type="Int64" />
+          <Property Name="raceID" Type="Int64" />
+          <Property Name="basePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="published" Type="Int64" />
+          <Property Name="marketGroupID" Type="Int64" />
+          <Property Name="graphicID" Type="Int64" />
+          <Property Name="iconID" Type="Int64" />
+          <Property Name="radius" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="soundID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="invMarketGroups">
+          <Key>
+            <PropertyRef Name="marketGroupID" />
+          </Key>
+          <Property Name="marketGroupID" Type="Int64" Nullable="false" />
+          <Property Name="parentGroupID" Type="Int64" />
+          <Property Name="marketGroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="iconID" Type="Int64" />
+          <Property Name="hasTypes" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="eveInventoryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="invMetaGroups" EntityType="Self.invMetaGroups" />
+          <EntitySet Name="invMetaTypes" EntityType="Self.invMetaTypes" />
+          <EntitySet Name="invTypes" EntityType="Self.invTypes" />
+          <EntitySet Name="invMarketGroups" EntityType="Self.invMarketGroups" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eveInventoryModelStoreContainer" CdmEntityContainer="eveInventoryEntities">
+          <EntitySetMapping Name="invMetaGroups">
+            <EntityTypeMapping TypeName="eveInventoryModel.invMetaGroups">
+              <MappingFragment StoreEntitySet="invMetaGroups">
+                <ScalarProperty Name="metaGroupID" ColumnName="metaGroupID" />
+                <ScalarProperty Name="metaGroupName" ColumnName="metaGroupName" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="iconID" ColumnName="iconID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invMetaTypes">
+            <EntityTypeMapping TypeName="eveInventoryModel.invMetaTypes">
+              <MappingFragment StoreEntitySet="invMetaTypes">
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+                <ScalarProperty Name="parentTypeID" ColumnName="parentTypeID" />
+                <ScalarProperty Name="metaGroupID" ColumnName="metaGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invTypes">
+            <EntityTypeMapping TypeName="eveInventoryModel.invTypes">
+              <MappingFragment StoreEntitySet="invTypes">
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+                <ScalarProperty Name="groupID" ColumnName="groupID" />
+                <ScalarProperty Name="typeName" ColumnName="typeName" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="mass" ColumnName="mass" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="capacity" ColumnName="capacity" />
+                <ScalarProperty Name="portionSize" ColumnName="portionSize" />
+                <ScalarProperty Name="raceID" ColumnName="raceID" />
+                <ScalarProperty Name="basePrice" ColumnName="basePrice" />
+                <ScalarProperty Name="published" ColumnName="published" />
+                <ScalarProperty Name="marketGroupID" ColumnName="marketGroupID" />
+                <ScalarProperty Name="graphicID" ColumnName="graphicID" />
+                <ScalarProperty Name="iconID" ColumnName="iconID" />
+                <ScalarProperty Name="radius" ColumnName="radius" />
+                <ScalarProperty Name="soundID" ColumnName="soundID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invMarketGroups">
+            <EntityTypeMapping TypeName="eveInventoryModel.invMarketGroups">
+              <MappingFragment StoreEntitySet="invMarketGroups">
+                <ScalarProperty Name="marketGroupID" ColumnName="marketGroupID" />
+                <ScalarProperty Name="parentGroupID" ColumnName="parentGroupID" />
+                <ScalarProperty Name="marketGroupName" ColumnName="marketGroupName" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="iconID" ColumnName="iconID" />
+                <ScalarProperty Name="hasTypes" ColumnName="hasTypes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="134d2e5ded7e4072a84cb7b24d7a5c1d" Name="Diagram1">
+        <EntityTypeShape EntityType="eveInventoryModel.invMetaGroups" Width="1.5" PointX="2.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eveInventoryModel.invMetaTypes" Width="1.5" PointX="4.875" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eveInventoryModel.invTypes" Width="1.5" PointX="7.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eveInventoryModel.invMarketGroups" Width="1.5" PointX="9.375" PointY="1.125" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
