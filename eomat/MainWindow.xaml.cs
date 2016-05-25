@@ -34,12 +34,10 @@ namespace eomat
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public event TreeListCellValueChangedEventHandler locationTreeValueChanging;
-        //public delegate void OnNodeCheck(object send, TreeListCellValueChangedEventArgs e);
-
         private readonly NodeManager _locationNodes = new NodeManager();
         private readonly NodeManager _marketItemNodes = new NodeManager();
         private readonly EveApiWrapper _eaw = new EveApiWrapper();
+        private List<string> _selectedRegions = new List<string>();
 
         public MainWindow()
         {
@@ -159,19 +157,24 @@ namespace eomat
 
         private void NodeChecked(object sender, TreeListNodeChangedEventArgs e)
         {
-            GetCheckedRegions();
+            if (e.ChangeType == NodeChangeType.CheckBox)
+            {                
+                var tmp = (RegionNode)e.Node.Content;
+
+                if (e.Node.IsChecked != null) AddCheckedRegions(tmp.Name, e.Node.IsChecked.Value);
+            }
         }
 
-        private List<string> GetCheckedRegions()
+        private void AddCheckedRegions(string name, bool isAdded)
         {
-            var tmpList = new List<string>();
-
-            foreach (var node in locationTreeView.View.Nodes)
+            if (isAdded)
             {
-                if(node.IsChecked == true) tmpList.Add(node.Content.ToString());
+                _selectedRegions.Add(name);
             }
-
-            return tmpList;
+            else
+            {
+                _selectedRegions.Remove(name);
+            }            
         }
     }
 }
